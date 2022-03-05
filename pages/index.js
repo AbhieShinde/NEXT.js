@@ -4,7 +4,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn } from 'mdb-rea
 const axios = require('axios').default;
 import Link from 'next/link'
 
-function index({heros}) {
+const index = ({heros}) => {
   return (
     <div className="container">
       <span className="display-5 my-2">Superhero Identity Manager</span>
@@ -17,8 +17,8 @@ function index({heros}) {
               <MDBCardText>
                 Reveal the Identity
               </MDBCardText>
-              <Link href={`/${hero._id}`}><MDBBtn className="mx-2">View Hero</MDBBtn></Link>
-              <Link href={`/${hero._id}/edit`}><MDBBtn>Edit Hero</MDBBtn></Link>
+              <Link href={`/${hero._id}`} passHref><MDBBtn className="mx-2">View Hero</MDBBtn></Link>
+              <Link href={`/${hero._id}/edit`} passHref><MDBBtn>Edit Hero</MDBBtn></Link>
             </MDBCardBody>
           </MDBCard>
         )
@@ -29,14 +29,12 @@ function index({heros}) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps() {
   const res = await axios('http://localhost:3000/api/hero')
-
-  const {hero} = res.data
   
   return {
     props: {
-      heros: hero
+      heros: res.data.hero
     } 
   }
 }
