@@ -1,6 +1,5 @@
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn } from 'mdb-react-ui-kit';
 const axios = require('axios').default;
-import Link from 'next/link'
 import {useRouter} from 'next/router'
 
 function EachHero({heros}) {
