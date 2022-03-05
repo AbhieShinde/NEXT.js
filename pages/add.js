@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 const axios = require('axios').default;
-import Link from 'next/link'
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import { useState } from 'react';
 
 function addNewHero() {
@@ -22,7 +21,7 @@ function addNewHero() {
         e.preventDefault()
 
         try {
-            const res = await axios('http://localhost:3000/api/hero', {
+            const res = await axios('/hero', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

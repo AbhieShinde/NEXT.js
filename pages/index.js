@@ -30,7 +30,7 @@ const index = ({heros}) => {
 }
 
 export async function getServerSideProps() {
-  const res = await axios('http://localhost:3000/api/hero')
+  const res = await axios('/hero')
   
   return {
     props: {

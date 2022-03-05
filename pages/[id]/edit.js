@@ -24,7 +24,7 @@ function editHero({heros}) {
         e.preventDefault()
 
         try {
-            const res = await axios(`http://localhost:3000/api/hero/${heroId}`, {
+            const res = await axios(`/hero/${heroId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ function editHero({heros}) {
 }
 
 export async function getServerSideProps({params}) {
-    const res = await axios(`http://localhost:3000/api/hero/${params.id}`)
+    const res = await axios(`/hero/${params.id}`)
   
     const {hero} = res.data
     

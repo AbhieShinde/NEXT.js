@@ -9,7 +9,7 @@ function EachHero({heros}) {
 
     const deleteHero = async() => {
         try {
-            const deleteHero = await axios(`http://localhost:3000/api/hero/${heros._id}`, {
+            const deleteHero = await axios(`/hero/${heros._id}`, {
                 method: 'DELETE'
             })
 
@@ -36,7 +36,7 @@ function EachHero({heros}) {
 }
 
 export async function getServerSideProps({params}) {
-    const res = await axios(`http://localhost:3000/api/hero/${params.id}`)
+    const res = await axios(`/hero/${params.id}`)
   
     const {hero} = res.data
     
